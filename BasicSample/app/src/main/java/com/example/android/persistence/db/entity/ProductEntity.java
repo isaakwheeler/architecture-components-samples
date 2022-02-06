@@ -28,6 +28,7 @@ public class ProductEntity implements Product {
     private String name;
     private String description;
     private int price;
+    private String location;
 
     @Override
     public int getId() {
@@ -45,6 +46,15 @@ public class ProductEntity implements Product {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override // adding location to the table
+    public String getlocation() {
+        return location;
+    }
+
+    public void setlocation(String location) {
+        this.location = location;
     }
 
     @Override
