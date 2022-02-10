@@ -38,7 +38,7 @@ import com.example.android.persistence.db.entity.ProductEntity;
 import com.example.android.persistence.db.entity.ProductFtsEntity;
 import java.util.List;
 
-@Database( version = 2, entities = {ProductEntity.class, ProductFtsEntity.class, CommentEntity.class}, autoMigrations = {@AutoMigration(from = 1, to = 2)})
+@Database( version = 3, entities = {ProductEntity.class, ProductFtsEntity.class, CommentEntity.class}, autoMigrations = {@AutoMigration(from = 2, to = 3)})
 @TypeConverters(DateConverter.class)
 public abstract class AppDatabase extends RoomDatabase {
 
@@ -132,8 +132,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
         @Override
         public void migrate(@NonNull SupportSQLiteDatabase database) {
-            database.execSQL("CREATE VIRTUAL TABLE IF NOT EXISTS `productsFts` USING FTS4("
-                + "`name` TEXT, `description` TEXT, content=`products`)");
+            database.execSQL("CREATE VIRTUAL TABLE IF NOT EXISTS `productsFts` USING FTS4(`name' TEXT, 'description' TEXT, content='products`)");
             database.execSQL("INSERT INTO productsFts (`rowid`, `name`, `description`) "
                 + "SELECT `id`, `name`, `description` FROM products");
 
