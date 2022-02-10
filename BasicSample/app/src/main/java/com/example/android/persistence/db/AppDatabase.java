@@ -18,6 +18,7 @@ package com.example.android.persistence.db;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.room.AutoMigration;
 import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 import androidx.room.Database;
@@ -37,7 +38,7 @@ import com.example.android.persistence.db.entity.ProductEntity;
 import com.example.android.persistence.db.entity.ProductFtsEntity;
 import java.util.List;
 
-@Database( version = 2, entities = {ProductEntity.class, ProductFtsEntity.class, CommentEntity.class}, autoMigrations = {@AutoMigration (from = 1, to = 2)})
+@Database( version = 2, entities = {ProductEntity.class, ProductFtsEntity.class, CommentEntity.class}, autoMigrations = {@AutoMigration(from = 1, to = 2)})
 @TypeConverters(DateConverter.class)
 public abstract class AppDatabase extends RoomDatabase {
 
